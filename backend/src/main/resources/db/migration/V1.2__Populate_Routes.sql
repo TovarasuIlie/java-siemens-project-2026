@@ -1,0 +1,17 @@
+INSERT INTO routes (route_name) VALUES
+('Iași – Timișoara Nord'),
+('Timișoara Nord – Iași'),
+('Vatra Dornei – Bistrița Nord'),
+('Cluj Napoca – Ilva Mică'),
+('Cluj Napoca – Bistrița Nord'),
+('Cluj Napoca – Iași'),
+('Baia Mare – Cluj Napoca'),
+('Dej Călători – Cluj Napoca'),
+('Bistrița Nord – Cluj Napoca'),
+('Cluj Napoca – Galați'),
+('Timișoara Nord – Iași'),
+('Galați - Cluj-Napoca'),
+('Iași – Cluj Napoca'),
+('Ilva Mică – Cluj Napoca'),
+('Vatra Dornei – Bistrița Nord'),
+('Ilva Mică – Cluj Napoca');

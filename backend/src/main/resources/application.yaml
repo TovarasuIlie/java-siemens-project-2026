@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: backend
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/siemens_trains_2026?forceBinary=false&reWriteBatchedInserts=true
+    username: siemens_app
+    password: ParolaTare
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        jdbc:
+          time_zone: Europe/Bucharest
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+
+  mail:
+    host: live.smtp.mailtrap.io
+    port: 587
+    username: api
+    password: 9bebac7a909cc7f021df94fcdbbc7881
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true

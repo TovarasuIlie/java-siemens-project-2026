@@ -7,6 +7,8 @@ public record Edge(
         String toStation,
         LocalTime departure,
         LocalTime arrival,
-        int routeId
+        int routeId,
+        int fromStopOrder,
+        int toStopOrder
 ) {
 }

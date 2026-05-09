@@ -7,6 +7,8 @@ public record TrainSegmentDTO(
         String fromStation,
         String toStation,
         LocalTime departureTime,
-        LocalTime arrivalTime
+        LocalTime arrivalTime,
+        int fromStopOrder,
+        int toStopOrder
 ) {
 }

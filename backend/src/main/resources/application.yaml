@@ -24,10 +24,10 @@ spring:
     locations: classpath:db/migration
 
   mail:
-    host: smtp.gmail.com
+    hostname: live.smtp.mailtrap.io
     port: 587
-    username: adresa_ta_de_email@gmail.com
-    password: parola_ta_de_aplicatie
+    username: api
+    password: 9bebac7a909cc7f021df94fcdbbc7881
     properties:
       mail:
         smtp:

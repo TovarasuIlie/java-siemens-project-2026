@@ -25,7 +25,7 @@ public class TrainService {
         List<TrainSearchResultDTO> results = trainRepository.findTrainsBetweenStations(from, to);
 
         if (results.isEmpty()) {
-            throw new NotFoundException("Nu au fost găsite trenuri între " + from + " și " + to);
+            throw new NotFoundException("No trains found between " + from + " and " + to);
         }
 
         return results;
@@ -90,7 +90,7 @@ public class TrainService {
         }
 
         if(foundJourneys.isEmpty()) {
-            throw new NotFoundException("Nu au fost găsite trenuri între " + startNode + " și " + endNode);
+            throw new NotFoundException("No trains found between " + startNode + " and " + endNode);
         }
 
         return deduplicateJourneys(foundJourneys);
@@ -147,7 +147,7 @@ public class TrainService {
         List<Object[]> results = routeStationRepository.findEdgesFromStation(stationName);
 
         if(results.isEmpty()) {
-            throw new NotFoundException("Statia " + stationName + " nu a fost gasita!");
+            throw new NotFoundException("Station " + stationName + " not found!");
         }
 
         return results.stream().map(row -> new Edge(

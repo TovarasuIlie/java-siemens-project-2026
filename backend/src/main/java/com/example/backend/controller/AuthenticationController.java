@@ -29,7 +29,7 @@ public class AuthenticationController {
     public ResponseEntity<Response> register(@Valid @RequestBody UserRegisterDTO request) throws BadRequestException {
         authenticationService.register(request);
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(new Response(HttpStatus.CREATED, "Contul a fost creat cu success!"));
+        return ResponseEntity.status(HttpStatus.CREATED).body(new Response(HttpStatus.CREATED, "User registered successfully."));
     }
 
     @PostMapping("login")

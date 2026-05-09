@@ -7,8 +7,6 @@ import com.example.backend.enums.UserCategory;
 import com.example.backend.exeption.BadRequestException;
 import com.example.backend.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -28,7 +26,7 @@ public class AuthenticationService {
 
     public void register(UserRegisterDTO newUser) throws BadRequestException {
         if(userRepository.existsByEmail(newUser.getEmail())) {
-            throw new BadRequestException("Acest email este deja folosit!");
+            throw new BadRequestException("This email address is already used!");
         }
 
         User user = User.builder()
@@ -53,7 +51,7 @@ public class AuthenticationService {
             return new LoginResult(accessToken, refreshToken);
 
         } catch (AuthenticationException e) {
-            throw new BadRequestException("Email sau parolă incorectă");
+            throw new BadRequestException("Incorrect email or password!");
         }
     }
 
@@ -61,7 +59,7 @@ public class AuthenticationService {
         String email = jwtService.extractEmail(refreshToken);
 
         User user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new BadRequestException("Adresa de email nu a fost gasita!"));
+                .orElseThrow(() -> new BadRequestException("Email address not found!"));
 
         String newAccessToken = jwtService.generateAccessToken(user);
         return new AuthResponse(newAccessToken);

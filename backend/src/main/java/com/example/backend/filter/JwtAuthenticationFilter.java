@@ -1,8 +1,8 @@
 package com.example.backend.filter;
 
-import com.example.backend.Entities.User;
-import com.example.backend.Services.JwtService;
-import com.example.backend.Services.UserDetailsServiceImp;
+import com.example.backend.entity.User;
+import com.example.backend.service.JwtService;
+import com.example.backend.service.UserDetailsServiceImp;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

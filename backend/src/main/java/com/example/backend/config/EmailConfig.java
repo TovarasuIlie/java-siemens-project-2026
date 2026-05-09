@@ -12,7 +12,7 @@ import java.util.Properties;
 public class EmailConfig {
     @Value("${spring.mail.port}")
     private int SMTP_PORT;
-    @Value("${spring.mail.hostname}")
+    @Value("${spring.mail.host}")
     private String hostname;
     @Value("${spring.mail.username}")
     private String username;

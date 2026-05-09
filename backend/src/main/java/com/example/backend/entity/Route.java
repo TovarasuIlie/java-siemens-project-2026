@@ -1,9 +1,7 @@
 package com.example.backend.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
@@ -12,6 +10,9 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
+@ToString(exclude = "stations")
+@EqualsAndHashCode(exclude = "stations")
 public class Route {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

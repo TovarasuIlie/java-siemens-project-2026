@@ -26,7 +26,7 @@ public class AuthenticationService {
     private final AuthenticationManager authenticationManager;
 
 
-    public ResponseEntity<Response> register(UserRegisterDTO newUser) throws BadRequestException {
+    public void register(UserRegisterDTO newUser) throws BadRequestException {
         if(userRepository.existsByEmail(newUser.getEmail())) {
             throw new BadRequestException("Acest email este deja folosit!");
         }
@@ -37,9 +37,7 @@ public class AuthenticationService {
                 .role(UserCategory.CUSTOMER)
                 .build();
 
-        userRepository.saveAndFlush(user);
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(new Response(HttpStatus.CREATED, "Contul a fost creat cu success!"));
+        userRepository.save(user);
     }
 
     public LoginResult login(UserLoginDTO login) throws BadRequestException {
@@ -59,13 +57,13 @@ public class AuthenticationService {
         }
     }
 
-    public ResponseEntity<?> refreshToken(String refreshToken) throws BadRequestException {
+    public AuthResponse refreshToken(String refreshToken) throws BadRequestException {
         String email = jwtService.extractEmail(refreshToken);
 
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new BadRequestException("Adresa de email nu a fost gasita!"));
 
         String newAccessToken = jwtService.generateAccessToken(user);
-        return ResponseEntity.ok(new AuthResponse(newAccessToken));
+        return new AuthResponse(newAccessToken);
     }
 }

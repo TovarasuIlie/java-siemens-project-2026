@@ -2,15 +2,18 @@ package com.example.backend.entity;
 
 import com.example.backend.enums.TrainCategory;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 @Entity
 @Table(name = "trains")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
+@ToString(exclude = "route")
+@EqualsAndHashCode(exclude = "route")
 public class Train {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,6 +24,7 @@ public class Train {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "train_type", nullable = false)
+    @JdbcTypeCode(SqlTypes.NAMED_ENUM)
     private TrainCategory trainType;
 
     @ManyToOne(fetch = FetchType.LAZY)

@@ -1,9 +1,7 @@
 package com.example.backend.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalTime;
 
@@ -15,6 +13,9 @@ import java.time.LocalTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
+@ToString(exclude = "route")
+@EqualsAndHashCode(exclude = "route")
 public class RouteStation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

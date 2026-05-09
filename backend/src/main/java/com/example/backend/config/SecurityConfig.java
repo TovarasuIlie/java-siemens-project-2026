@@ -35,8 +35,12 @@ public class SecurityConfig implements WebMvcConfigurer {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(req -> {
+                            req.requestMatchers("/api/auth/**").permitAll();
                             req.requestMatchers("/api/trains/**").permitAll();
                             req.requestMatchers("/api/stations/**").permitAll();
+                            req.requestMatchers("/api/booking/**").authenticated();
+                            req.requestMatchers("/api/admin/trains/**").hasRole("ADMIN");
+                            req.requestMatchers("/api/admin/routes/**").hasRole("ADMIN");
                             req.anyRequest().denyAll();
                         }
                 )

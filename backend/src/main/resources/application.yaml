@@ -24,7 +24,7 @@ spring:
     locations: classpath:db/migration
 
   mail:
-    hostname: live.smtp.mailtrap.io
+    host: live.smtp.mailtrap.io
     port: 587
     username: api
     password: 9bebac7a909cc7f021df94fcdbbc7881

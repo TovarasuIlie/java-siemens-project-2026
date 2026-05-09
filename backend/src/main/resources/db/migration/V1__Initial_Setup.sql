@@ -49,20 +49,20 @@ CREATE TABLE route_stations (
     UNIQUE (route_id, stop_order)
 );
 
-CREATE TABLE bookings (
-    id SERIAL PRIMARY KEY,
-    train_id INT NOT NULL REFERENCES trains(id),
-    customer_email VARCHAR(255) NOT NULL,
-    seats_booked INT NOT NULL,
-    start_station_id INT NOT NULL REFERENCES stations(id),
-    end_station_id INT NOT NULL REFERENCES stations(id),
-    travel_date DATE NOT NULL,
-    booking_date TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
-);
-
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     email VARCHAR(255) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
     role user_category DEFAULT 'CUSTOMER'
+);
+
+CREATE TABLE bookings (
+    id SERIAL PRIMARY KEY,
+    user_id INT REFERENCES users(id) ON DELETE CASCADE,
+    train_id INT REFERENCES trains(id) ON DELETE CASCADE,
+    seats_booked INT NOT NULL,
+    start_station_id INT NOT NULL REFERENCES stations(id),
+    end_station_id INT NOT NULL REFERENCES stations(id),
+    travel_date DATE NOT NULL,
+    booking_date TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
 );
